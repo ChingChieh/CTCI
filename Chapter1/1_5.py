@@ -1,27 +1,29 @@
 def checkOneEdit(string1, string2):
     # User can perform 1.insert 2.remove 3.replace
-    if abs(len(string1) - len(string2)) > 1:
+    len_diff = abs(len(string1) - len(string2))
+    if len_diff > 1:
         return False
-    if string1 == string2:
-        return True
-    longString = string1 if len(string1) > len(string2) else string2
-    shortString = string1 if len(string1) < len(string2) else string2
-    count = 0;
-    if len(longString) == len(shortString):
-        for i in range(len(longString)):
-            if longString[i] != shortString[i]:
-                count += 1
-                if count > 1:
+    elif len_diff == 0:
+        diff = False
+        for i in range(len(string1)):
+            if string1[i] != string2[i]:
+                if diff:
                     return False
+                diff = True
+
     else:
-        diff = 0
+        # longString = string1 if len(string1) > len(string2) else string2
+        # shortString = string1 if len(string1) < len(string2) else string2
+        if len(string1) > len(string2):
+            longString, shortString = string1, string2
+        else:
+            longString, shortString = string2, string1
+        shift = 0
         for i in range(len(shortString)):
-            if longString[i + diff] != shortString[i]:
-                if diff == 1:
+            if longString[i + shift] != shortString[i]:
+                if shift:
                     return False
-                diff = 1
-
-
+                shift = 1
     return True
 
 if __name__ == "__main__":
