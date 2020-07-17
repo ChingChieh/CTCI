@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+.DS_store
+test.py
+a.out
+2_6.c
+LinkedListNode.py
