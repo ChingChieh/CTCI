@@ -7,8 +7,8 @@ def printMatrix(array):
     print("")
 def rotateMatrix(array):
     row = len(array)
-    head = 0
-    tail = row - 1
+    head = 0 # Denote the starting index of every layer
+    tail = row - 1 # the ending index of every layer
     for t in range(row / 2):
         do = row - (t * 2) - 1
         for i in range(do):
