@@ -70,7 +70,7 @@ class DoublyLinkedList(LinkedList):
             self.tail = self.tail.next
         return self
 
-if __name_ == "__main__":
+if __name__ == "__main__":
     llist = DoublyLinkedList().generate(10, 30, 0)
     print(llist)
     tmp = llist.tail
