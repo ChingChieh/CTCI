@@ -21,9 +21,19 @@ def delDuplicate_set(llist):
             seen.add(node.next.value)
             node = node.next
 
+def delDuplicate_runner(llist):
+    current = llist.head
+    while current.next:
+        runner = current
+        while runner.next:
+            if runner.next.value == current.value:
+                runner.next = runner.next.next
+            else:
+                runner = runner.next
+        current = current.next
 
 if __name__ == "__main__":
-    llist = linkedlist().generate(30, 10, 0)
+    llist = linkedlist().generate(30, 0, 10)
     print(llist)
-    delDuplicate_set(llist)
+    delDuplicate_runner(llist)
     print(llist)
