@@ -53,7 +53,7 @@ class LinkedList:
         for v in values:
             self.add(v)
 
-    def generate(self, n, maximum, minimum):
+    def generate(self, n, minimum, maximum):
         self.head = None
         self.tail = None
         for i in range(n):
@@ -71,7 +71,7 @@ class DoublyLinkedList(LinkedList):
         return self
 
 if __name__ == "__main__":
-    llist = DoublyLinkedList().generate(10, 30, 0)
+    llist = DoublyLinkedList().generate(10, 0, 30)
     print(llist)
     tmp = llist.tail
     while tmp != llist.head:
