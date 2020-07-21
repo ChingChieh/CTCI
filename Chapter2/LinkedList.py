@@ -44,11 +44,10 @@ class LinkedList:
         return self.tail
 
     def addToBeginning(self, value):
-        if self.haed == None:
+        if self.head == None:
             self.head = self.tail = LinkedListNode(value)
         else:
-            self.head.prev = LinkedListNode(value)
-            self.head = self.head.prev
+            self.head = LinkedListNode(value, self.head)
         return self.head
 
     def addMultiValue(self, values):
