@@ -11,11 +11,11 @@ class LinkedListNode:
         return str(self.value)
 
 class LinkedList:
-    def __init__(self, value=None):
+    def __init__(self, values=None):
         self.head = None
         self.tail = None
-        if value is not None:
-            pass
+        if values is not None:
+            self.addMultiValue(values)
 
     def __iter__(self):
         current = self.head
@@ -41,6 +41,7 @@ class LinkedList:
         else:
             self.tail.next = LinkedListNode(value)
             self.tail = self.tail.next
+        return self.tail
 
     def addToBeginning(self, value):
         if self.haed == None:
@@ -48,6 +49,7 @@ class LinkedList:
         else:
             self.head.prev = LinkedListNode(value)
             self.head = self.head.prev
+        return self.head
 
     def addMultiValue(self, values):
         for v in values:
