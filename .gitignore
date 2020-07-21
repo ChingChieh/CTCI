@@ -129,7 +129,7 @@ dmypy.json
 .pyre/
 
 .DS_store
-test.py
+test*.py
 a.out
 2_6.c
 LinkedListNode.py
