@@ -57,15 +57,24 @@ def PreOrder(root, level, listOfLinkedList):
         PreOrder(root.left, level + 1, listOfLinkedList)
         PreOrder(root.right, level + 1, listOfLinkedList)
 
-# def bfs(root):
-#     if root == None:
-#         return None
-#     q = queue.Queue()
-#     q.put(root)
-#     while not q.empty():
-#         node = q.get()
-#
-#     pass
+def bfs(root):
+    if root == None:
+        return None
+    current = []
+    current.append(root)
+    result = []
+    while len(current) > 0:
+        tmp = ll.LinkedList()
+        tmp.addMultiValue([i.val for i in current])
+        result.append(tmp)
+        parents = current
+        current = []
+        for parent in parents:
+            if parent.left:
+                current.append(parent.left)
+            if parent.right:
+                current.append(parent.right)
+    return result
 
 if __name__ == "__main__":
     array = createArray(1, 32)
@@ -76,4 +85,7 @@ if __name__ == "__main__":
     for i in range(len(l)):
         print(l[i])
 
-
+    a = bfs(root)
+    print()
+    for i in range(len(a)):
+        print(a[i])
