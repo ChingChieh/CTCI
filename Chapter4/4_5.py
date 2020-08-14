@@ -1,18 +1,14 @@
 import Tree as t
-def checkBST(root):
-    val = root.val
-    if root.left == None and root.right == None:
+def checkBST(root, minValue, maxValue):
+    if root == None:
         return True
-    elif root.right == None:
-        return root.val > root.left.val
-    elif root.left == None:
-        return root.val < root.right.val
-    elif val > root.right.val or val < root.left.val:
+    if (minValue != None and root.val < minValue) or (maxValue != None and root.val > maxValue):
         return False
-    leftResult = checkBST(root.left)
-    rightResult = checkBST(root.right)
-
-    return leftResult and rightResult
+    leftResult = checkBST(root.left, minValue, root.val)
+    rightResult = checkBST(root.right, root.val, maxValue)
+    if (leftResult == False) or (rightResult == False):
+        return False
+    return True
 
 if __name__ == "__main__":
     array = []
@@ -20,8 +16,8 @@ if __name__ == "__main__":
         array.append(i)
     root = t.buildBFS(array, 0, len(array) - 1)
     t.print2DUtil(root, 0)
-    print(checkBST(root))
-    node = t.searchBST(root, 30)
-    node.right = t.TreeNode(17)
+    print(checkBST(root, None, None))
+    node = t.searchBST(root, 14)
+    node.val = 500
     t.print2DUtil(root, 0)
-    print(checkBST(root))
+    print(checkBST(root, None, None))
