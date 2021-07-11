@@ -22,8 +22,8 @@ def build_tree(array, start, end):
         return None
     mid = (end + start) // 2
     root = TreeNode(array[mid])
-    root.right = build_tree(array, start, mid - 1)
-    root.left = build_tree(array, mid + 1, end)
+    root.left = build_tree(array, start, mid - 1)
+    root.right = build_tree(array, mid + 1, end)
 
     return root
 
@@ -49,10 +49,27 @@ def print2DUtil(root, space) :
     # Process left child
     print2DUtil(root.left, space)
 
+def PreOrderTraversal(node, level):
+    if node:
+        print(str(node.val) + " at:" + str(level))
+        PreOrderTraversal(node.left, level + 1)
+        PreOrderTraversal(node.right, level + 1)
+
+def InOrderTraversal(node):
+    if node:
+        InOrderTraversal(node.left)
+        print(node.val)
+        InOrderTraversal(node.right)
+
 if __name__ == "__main__":
-    testArray = [1,2,3]
-    root = TreeNode()
-    root = build_min_binary_search_tree(testArray, root, 0, len(testArray) - 1)
-    print2DUtil(root, 0)
-    # print2DUtil(build_tree(testArray, 0, len(testArray) - 1), 0)
+    testArray = [1,2,3,4,5,6,7,8,9,10,11]
+    # root = TreeNode()
+    # root = build_min_binary_search_tree(testArray, root, 0, len(testArray) - 1)
+    # print2DUtil(root, 0)
+    tree = build_tree(testArray, 0, len(testArray) - 1)
+    print2DUtil(tree, 0)
+    print("Pre Order Traversal:")
+    PreOrderTraversal(tree, 0)
+    print("In Order Traversal:")
+    InOrderTraversal(tree)
 
